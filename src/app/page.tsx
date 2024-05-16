@@ -1,5 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import Image from "next/image";
 
 export default function Home() {
   return (

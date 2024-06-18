@@ -41,8 +41,6 @@ export const ourFileRouter = {
         });
         return { configId: updatedConfiguration.id };
       }
-
-      return { configId };
     }),
 } satisfies FileRouter;
 

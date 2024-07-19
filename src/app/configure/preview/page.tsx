@@ -7,12 +7,14 @@ interface PageProps {
     [key: string]: string | string[] | undefined;
   };
 }
+
 const Page = async ({ searchParams }: PageProps) => {
   const { id } = searchParams;
 
   if (!id || typeof id !== 'string') {
     return notFound();
   }
+
   const configuration = await db.configuration.findUnique({
     where: { id },
   });
@@ -23,4 +25,5 @@ const Page = async ({ searchParams }: PageProps) => {
 
   return <DesignPreview configuration={configuration} />;
 };
+
 export default Page;

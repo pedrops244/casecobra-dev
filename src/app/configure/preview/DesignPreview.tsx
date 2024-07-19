@@ -1,4 +1,5 @@
 'use client';
+
 import Phone from '@/components/Phone';
 import { Button } from '@/components/ui/button';
 import { BASE_PRICE, PRODUCT_PRICES } from '@/config/products';
@@ -20,7 +21,6 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const { toast } = useToast();
   const { id } = configuration;
   const { user } = useKindeBrowserClient();
-
   const [isLoginModalOpen, setIsLoginModelOpen] = useState<boolean>(false);
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
@@ -58,7 +58,7 @@ const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
 
   const handleCheckout = () => {
     if (user) {
-      createCheckoutSession({ configId: id });
+      createPaymentSession({ configId: id });
     } else {
       localStorage.setItem('configurationId', id);
       setIsLoginModelOpen(true);

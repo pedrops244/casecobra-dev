@@ -42,6 +42,8 @@ export const createCheckoutSession = async ({
     },
   });
 
+  console.log(user.id, configuration.id);
+
   if (existingOrder) {
     order = existingOrder;
   } else {

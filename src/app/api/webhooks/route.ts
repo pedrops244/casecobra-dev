@@ -55,7 +55,7 @@ export async function POST(req: Request) {
               country: shippingAddress!.country!,
               postalCode: shippingAddress!.postal_code!,
               street: shippingAddress!.line1!,
-              state: shippingAddress!.state!,
+              state: shippingAddress!.state,
             },
           },
           billingAddress: {
@@ -65,7 +65,7 @@ export async function POST(req: Request) {
               country: billingAddress!.country!,
               postalCode: billingAddress!.postal_code!,
               street: billingAddress!.line1!,
-              state: billingAddress!.state!,
+              state: billingAddress!.state,
             },
           },
         },
@@ -94,8 +94,9 @@ export async function POST(req: Request) {
     return NextResponse.json({ result: event, ok: true });
   } catch (err) {
     console.error(err);
+
     return NextResponse.json(
-      { message: 'Something went wront', ok: false },
+      { message: 'Something went wrong', ok: false },
       { status: 500 },
     );
   }

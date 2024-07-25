@@ -41,5 +41,6 @@ export function constructMetadta({
       creator: '@itspeedrin',
     },
     icons,
+    metadataBase: new URL('https://casecobra-dev-gold.vercel.app/'),
   };
 }

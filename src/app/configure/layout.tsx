@@ -10,4 +10,5 @@ const Layout = ({ children }: { children: ReactNode }) => {
     </MaxWidthWrapper>
   );
 };
+
 export default Layout;

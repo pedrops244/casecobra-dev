@@ -13,19 +13,14 @@ import Confetti from 'react-dom-confetti';
 import { createCheckoutSession } from './actions';
 import { useRouter } from 'next/navigation';
 import { useToast } from '@/components/ui/use-toast';
+import { useKindeBrowserClient } from '@kinde-oss/kinde-auth-nextjs';
 import LoginModal from '@/components/LoginModal';
-import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types';
 
-const DesignPreview = ({
-  configuration,
-  user,
-}: {
-  configuration: Configuration;
-  user: KindeUser | null;
-}) => {
+const DesignPreview = ({ configuration }: { configuration: Configuration }) => {
   const router = useRouter();
   const { toast } = useToast();
   const { id } = configuration;
+  const { user } = useKindeBrowserClient();
   const [isLoginModalOpen, setIsLoginModalOpen] = useState<boolean>(false);
 
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
@@ -65,7 +60,7 @@ const DesignPreview = ({
   const handleCheckout = () => {
     if (user) {
       // create payment session
-      createPaymentSession({ configId: id, user });
+      createPaymentSession({ configId: id });
     } else {
       // need to log in
       localStorage.setItem('configurationId', id);

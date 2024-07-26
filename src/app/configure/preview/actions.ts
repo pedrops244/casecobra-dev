@@ -1,5 +1,4 @@
 'use server';
-
 import { BASE_PRICE, PRODUCT_PRICES } from '@/config/products';
 import { db } from '@/db';
 import { stripe } from '@/lib/stripe';
@@ -21,6 +20,7 @@ export const createCheckoutSession = async ({
 
   const { getUser } = getKindeServerSession();
   const user = await getUser();
+  console.log(user);
 
   if (!user) {
     throw new Error('You need to be logged in');
@@ -41,8 +41,6 @@ export const createCheckoutSession = async ({
       configurationId: configuration.id,
     },
   });
-
-  console.log(user.id, configuration.id);
 
   if (existingOrder) {
     order = existingOrder;

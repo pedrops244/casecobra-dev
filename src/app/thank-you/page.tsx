@@ -1,13 +1,10 @@
 import { Suspense } from 'react';
 import ThankYou from './ThankYou';
-import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server';
 
-const Page = async () => {
-  const { getUser } = getKindeServerSession();
-  const user = await getUser();
+const Page = () => {
   return (
     <Suspense>
-      <ThankYou user={user!} />
+      <ThankYou />
     </Suspense>
   );
 };

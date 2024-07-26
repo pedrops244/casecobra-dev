@@ -6,15 +6,14 @@ import { useSearchParams } from 'next/navigation';
 import { Loader2 } from 'lucide-react';
 import PhonePreview from '@/components/PhonePreview';
 import { formatPrice } from '@/lib/utils';
-import { KindeUser } from '@kinde-oss/kinde-auth-nextjs/types';
 
-const ThankYou = ({ user }: { user: KindeUser }) => {
+const ThankYou = () => {
   const searchParams = useSearchParams();
   const orderId = searchParams.get('orderId') || '';
 
   const { data } = useQuery({
     queryKey: ['get-payment-status'],
-    queryFn: async () => await getPaymentStatus({ orderId, user }),
+    queryFn: async () => await getPaymentStatus({ orderId }),
     retry: true,
     retryDelay: 500,
   });
